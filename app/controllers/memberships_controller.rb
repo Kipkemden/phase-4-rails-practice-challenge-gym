@@ -9,6 +9,11 @@ class MembershipsController < ApplicationController
       end
     end
   
+    def index
+      memberships = Membership.all
+      render json: memberships
+    end
+  
     private
   
     def membership_params

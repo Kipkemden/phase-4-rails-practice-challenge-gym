@@ -1,2 +1,5 @@
 class Gym < ApplicationRecord
-end
+    has_many :memberships
+    has_many :clients, through: :memberships
+  end
+  

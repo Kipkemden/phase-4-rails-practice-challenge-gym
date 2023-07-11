@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
-  post '/memberships', to: 'memberships#create'
-  get '/gyms/:id', to: 'gyms#show'
-  delete '/gyms/:id', to: 'gyms#destroy'
-  get '/clients/:id', to: 'clients#show'
+  resources :gyms, only: [:show, :destroy]
+  resources :clients, only: [:show]
+  resources :memberships, only: [:create, :index]
 
-  # Bonus routes
-  get '/clients', to: 'clients#index'
-  post '/clients', to: 'clients#create'
-  patch '/clients/:id', to: 'clients#update'
-  get '/gyms', to: 'gyms#index'
-  post '/gyms', to: 'gyms#create'
-  patch '/gyms/:id', to: 'gyms#update'
+  # For bonus routes:
+  resources :gyms, only: [:index, :create, :update]
+  resources :clients, only: [:index, :create, :update]
 end
